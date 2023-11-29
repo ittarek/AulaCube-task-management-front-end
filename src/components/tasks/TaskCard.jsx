@@ -1,0 +1,72 @@
+import { ArrowRightIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { useContext, useEffect, useState } from "react";
+// import { getToDB, updateStatus } from "../utils/database";
+import { AuthContext } from "../../providers/TaskProvider";
+
+const TaskCard = ({ item }) => {
+  const { tasks, setTasks,removeFromDb,deleteTasks , updateStatus } = useContext(AuthContext);
+
+
+
+  //   const updateStatus = data => {
+  //     const targetIndex = tasks.findIndex(task => task.id === data.id);
+  //     if (targetIndex !== -1) {
+  //       const updatedTasks = [...tasks];
+  //       const target = updatedTasks[targetIndex];
+
+  //       // Update the status based on the current status
+  //       if (target.status === "pending") {
+  //         target.status = "running";
+  //       } else if (target.status === "running") {
+  //         target.status = "done";
+  //       } else {
+  //         target.status = "archive";
+  //       }
+
+  //       // Update the specific task in the array
+  //       updatedTasks[targetIndex] = target;
+
+  //       // Update state to trigger a re-render
+  //       setTasks(...updatedTasks);
+
+  //       // Update the entire tasks array in localStorage
+  //       localStorage.setItem("tasks-item", JSON.stringify(updatedTasks));
+  //     } else {
+  //       console.error("Task not found for the given ID:", data.id);
+  //     }
+  //   };
+
+  return (
+    <div className="bg-secondary/10 rounded-md p-5">
+      <h1
+        className={`text-lg font-semibold mb-3  
+        ${item.priority === "high" ? "text-red-500" : ""}
+         ${item.priority === "medium" ? "text-yellow-500" : ""}
+          ${item.priority === "low" ? "text-green-500" : ""}`}
+      >
+        {item?.title}
+      </h1>
+      <h1>Hello world</h1>
+      <p className="mb-3">{item?.description}</p>
+      <p className="text-sm">Assigned to - {item?.assign}</p>
+      <div className="flex justify-between mt-3">
+        <p>{item?.deadline}</p>
+        <div className="flex gap-3">
+          {/* You might want to add a confirmation modal or dialog before triggering the deletion */}
+          <button title="Delete" onClick={() => removeFromDb(item)}>
+            <TrashIcon className="h-5 w-5 text-red-500" />
+          </button>
+
+          <button
+            onClick={() => updateStatus(item, tasks, setTasks)}
+            title="In progress"
+          >
+            <ArrowRightIcon className="h-5 w-5 text-primary" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TaskCard;
