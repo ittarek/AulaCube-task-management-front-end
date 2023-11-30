@@ -144,7 +144,7 @@ const Tasks = () => {
                 {pendingTask?.length}
               </p>
             </div>
-            <div className="space-y-3 bg-red-200">
+            <div className="space-y-3 bg-red-100">
               {pendingTask?.map(item => (
                 <TaskCard key={item.id} item={item} />
               ))}

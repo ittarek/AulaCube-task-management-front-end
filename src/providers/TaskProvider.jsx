@@ -74,6 +74,31 @@ const TaskProvider = ({ children }) => {
     }
   };
 
+  // Edit The Task
+  const handleEditTask = (data,item) => {
+
+    
+    const targetIndex = tasks.findIndex(items => items.id === item.id);
+
+    if (targetIndex !== -1) {
+      const editedTasks = [...tasks];
+      editedTasks[targetIndex] = {
+        ...editedTasks[targetIndex],
+        assign: data.assign,
+        description: data.description,
+        priority: data.priority,
+      };
+
+      // Update state to trigger a re-render
+      setTasks(editedTasks);
+
+      // Update the entire tasks array in localStorage
+      localStorage.setItem("tasks-item", JSON.stringify(editedTasks));
+    } else {
+      console.error("Task not found for the given ID:", data.id);
+    }
+  };
+
   useEffect(() => {
     const fetchedTasks = getToDB();
     setTasks(Array.isArray(fetchedTasks) ? fetchedTasks : []);
@@ -92,6 +117,8 @@ const TaskProvider = ({ children }) => {
     deleteTasks,
     getToDB,
     removeFromDb,
+
+    handleEditTask,
   };
 
   return (
