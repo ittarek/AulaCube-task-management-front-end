@@ -22,6 +22,15 @@ if you could the running this project just write this cmd commend (npm run dev) 
 
  - and your is working thek click the right arrow button then send your task in prograss border. 
 
+ - click the arrow button 
+![arrow](https://github.com/ittarek/AulaCube-task-management-front-end/assets/98639901/8587cc23-6814-4a14-bb43-6e54a95c5b9d)
+
+- for edit task so click this edit task button
+![edit](https://github.com/ittarek/AulaCube-task-management-front-end/assets/98639901/e7c59414-d9f9-424c-9b96-418550ec54ee)
+
+- for any task delete so click Delete trash icon
+![delete](https://github.com/ittarek/AulaCube-task-management-front-end/assets/98639901/87bb02c8-5f22-48da-a2f3-3a26b6ec9deb)
+
  - and finaly complete your task so click the arrow button and the go to this task is show complete boder side.
 
  - if you have to change you task data link name, description,priority lable so click the Edit task button in front of task card then change you data.
